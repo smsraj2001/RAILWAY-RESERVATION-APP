@@ -1,13 +1,13 @@
 # pip install mysql-connector-python
 import mysql.connector
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="railway_reservation_362"
-)
-c = mydb.cursor()
+try:
+    mydb = mysql.connector.connect(**st.secrets["mysql"])
+    c = mydb.cursor(buffered = True)
+except Exception as e:
+    st.write("Error is :{}....Trying to Reconnect".format(e))
+    mydb = mysql.connector.connect(**st.secrets["mysql"])
+    c = mydb.cursor(buffered = True)    
 
 
 def create_table():
