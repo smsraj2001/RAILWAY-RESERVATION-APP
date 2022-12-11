@@ -1,5 +1,6 @@
 # pip install mysql-connector-python
 import mysql.connector
+import streamlit as st
 
 try:
     mydb = mysql.connector.connect(**st.secrets["mysql"])
